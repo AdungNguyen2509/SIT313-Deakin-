@@ -1,0 +1,23 @@
+.card-container{
+    display: flex;
+    max-width: 1120px;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.card-item{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 20px 20vh;
+    list-style: none;
+    text-align: center;
+    width: 70vw;
+    justify-content: center;
+}
+
+.card > label {
+    font-weight: 600;
+}

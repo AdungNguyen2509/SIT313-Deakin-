@@ -1,0 +1,15 @@
+.banner {
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    object-fit: contain;
+  }
+
+ 
+.banner > h1 {
+    font-weight: 600;  
+    font-size: 50px;
+}
+

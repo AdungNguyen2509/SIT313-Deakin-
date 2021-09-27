@@ -1,0 +1,60 @@
+.footer-div{
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);  
+    height: 60px;
+    display: grid;
+    grid-template-columns: 30vh 60vh 30vh auto 30vh 30vh;
+    grid-template-rows: 50% 10px auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer-wrapper-left, .footer-wrapper-right{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-wrapper-left, .footer-wrapper-right > h2{
+    color: white;
+    font-weight: 600;
+}
+
+.footer-wrapper-left{
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+.footer-wrapper-right{
+    grid-column-start: 5;
+    grid-column-end: 7;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.footer-wrapper-left > .input-email {
+    width: 30%;
+    border: none;
+    border-radius: 2px;
+}
+
+.footer-wrapper-left > .btn-sub{
+    border-radius: 2px;
+    border: none;
+    padding: 3px 5px;
+    background-color:#21D4FD;
+}
+
+.footer-wrapper-left > .btn-sub:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+
+
+
+
+

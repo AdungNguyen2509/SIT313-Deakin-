@@ -1,0 +1,203 @@
+.navBar {
+    position: relative;
+    height: auto;
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #fff;
+    font-family: "Trirong", serif;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #fff;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.image {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 400px;
+}
+
+.overlay {
+    position: absolute;
+    top: 100;
+    bottom: 0;
+    height: 20%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #000;
+}
+
+.container:hover .overlay {
+    opacity: 0.78;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    font-family: "Trirong", serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar {
+    width: 250px;
+    height: 250px;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+    top: 0%;
+}
+
+.profile>description {
+    color: black;
+    width: 500px;
+    margin: 10px;
+    text-align: center;
+}
+
+.description>p{
+    font-family: "Trirong", serif;
+    font-size: 25px;
+}
+
+.description2>h2{
+    font-family: "Trirong", serif;
+    font-size: 40px;
+}
+
+hr.new1 {
+    border: 1px solid black;
+    width: 40%;
+}
+
+.project {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.project1, .project2{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.img1{
+    width: 300px;
+    height: auto;
+}
+
+.img2{
+    width: 300px;
+    height: auto;
+}
+
+.project2>img2{
+    top:30%;
+}
+
+
+.detail {
+    width: 600px;
+    margin: 10px;
+    float: right;
+    line-height: 35px;
+    font-size: 30px;
+}
+
+.detail>h2{
+    font-family: "Trirong", serif;
+    font-size: 25px;
+
+}
+
+.detail>li {
+    font-size: 15px;
+    font-family: "Trirong", serif;
+}
+
+* {
+    box-sizing: border-box;
+  }
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+  
+  /* Create four equal columns that sits next to each other */
+  .column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+  }
+  
+  .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+  }
+  
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media (max-width: 800px) {
+    .column {
+      flex: 50%;
+      max-width: 50%;
+    }
+  }
+  
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media (max-width: 600px) {
+    .column {
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+
+
+
+
