@@ -1,0 +1,21 @@
+.price-div{
+    height: auto;
+    width: 100%;
+}
+
+.content-wrapper{
+    display: flex;
+    list-style: none;
+    flex-direction: column; 
+    gap: -10px 20px;
+    padding: 0 40px;
+
+}
+
+.price-option{
+    display: flex;
+    list-style: none;
+    margin: 20px -40px;
+    gap: 30px;
+}
+

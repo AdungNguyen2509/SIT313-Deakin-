@@ -1,0 +1,21 @@
+.newtask-div{
+    width: 100%;
+    height: auto;
+}
+
+
+.header{
+    background-color: #E29578;    
+    padding: 5px 10px;   
+}
+
+.task-item{
+    display: flex;
+    list-style: none; 
+    gap: 20px 50px;
+}
+
+.setting-div{
+    height:auto
+}
+

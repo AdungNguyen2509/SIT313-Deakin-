@@ -1,0 +1,10 @@
+.setting-div{
+    height: auto;
+    width: 100%;
+}
+
+.suburb-div{
+    display: flex;
+    padding: 10px 40px;
+    gap: 50px;
+}

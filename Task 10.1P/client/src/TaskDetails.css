@@ -1,0 +1,12 @@
+.detail-div{
+    width: 100%;
+    height: auto;
+    
+}
+
+.task-title, .task-desc{
+    display: flex;
+    padding: 10px 40px;
+    gap: 50px;
+}
+
