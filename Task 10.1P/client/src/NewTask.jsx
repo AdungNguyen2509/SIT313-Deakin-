@@ -1,75 +1,102 @@
 import React, { useState } from "react";
 import Button from "./Button";
 import './NewTask.css';
-import TaskDetails from "./TaskDetails";
-import TaskSetting from "./TaskSetting";
-import Task from './Task';
+import Checkbox from "./Checkbox";
+import InputBox from "./InputBox";
 
 const NewTask = () => {
-    const [checked, setChecked] = useState("inPerson");
+    const [checkedOne, setCheckedOne] = useState(false);
+    const [checkedTwo, setCheckedTwo] = useState(false);
+
+    const [state, setState] = useState({
+        hooks: true
+    })
+
+
+    const handleChange = (evt) => {
+        const value = evt.target.value
+        const name = evt.target.name
+        data.budget = name
+        setState({
+            ...state,
+            [evt.target.name]: value
+        });
+    }
     const [data, setData] = useState({
         taskType: '',
         taskTitle: '',
         taskDesc: '',
         suburbInput: '',
-        dateInput: ''
+        dateInput: '',
+        budget: '',
+        budgetAmount: ''
     })
 
-
-    const handleCheck = (event) => {
-        const {value,name} = event.target
-        setChecked(value)   
-        setData( (preValue) => {
-            return{
-                ...preValue,
-                [name]:value
-            }
-        })      
+    const handleChangeOne = (event) => {
+        const name = event.target.name
+        data.taskType = name
+        setCheckedOne(!checkedOne)
     }
 
+    const handleChangeTwo = (event) => {
+        const name = event.target.name
+        data.taskType = name
+        setCheckedTwo(!checkedTwo)
+    }
+
+
+    const handleInput = (event) => {
+        const { value, name } = event.target
+        setData((preValue) => {
+            return {
+                ...preValue,
+                [name]: value
+            }
+        })
+    }
 
 
     const handleClick = () => {
         fetch('http://localhost:4000/register', {
             method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body : JSON.stringify({
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
                 taskType: data.taskType,
                 taskTitle: data.taskTitle,
                 taskDesc: data.taskDesc,
                 suburb: data.suburbInput,
-                date: data.dateInput
+                date: data.dateInput,
+                budget: data.budget,
+                budgetAmount: data.budgetAmount
             })
         })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(err => {
-            console.log("Error:" + err)
-        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(err => {
+                console.log("Error:" + err)
+            })
     }
 
     return (
         <div className="newtask-div">
             <h3 className="header">New Task</h3>
             <ul className="task-item">
-                <li style={{ fontSize: "17px" }}>Select Task Type: </li>
+                <li style={{ fontSize: "17px" }}>Select Task Type</li>
                 <li>
-                    <Task
-                        type="radio"
-                        name="taskType"
-                        checked={checked === "inPerson"}
-                        value="inPerson"
-                        onChange={handleCheck}
+                    <Checkbox
+                        type="checkbox"
+                        name="InPerson"
+                        value={checkedOne}
+                        onChange={handleChangeOne}
                         lable="In person"
                     />
                 </li>
                 <li>
-                    <Task
-                        type="radio"
-                        checked={checked === "online"}
-                        name="taskType"
-                        value="online"
-                        onChange={handleCheck}
+                    <Checkbox
+                        type="checkbox"
+                        name="Online"
+                        value={checkedTwo}
+                        onChange={handleChangeTwo}
                         lable="Online"
                     />
                 </li>
@@ -77,12 +104,12 @@ const NewTask = () => {
 
 
             <h3 className="header">Describe your Task to Experts</h3>
-            <TaskDetails
+            <InputBox
                 text="Task Title"
                 type="text"
                 name="taskTitle"
                 value={data.taskTitle}
-                onChange={handleCheck}
+                onChange={handleInput}
                 placeholder="Enter task title"
                 style={{
                     width: "50%",
@@ -90,12 +117,12 @@ const NewTask = () => {
                     padding: "10px 15px",
                 }}
             />
-            <TaskDetails
+            <InputBox
                 text="Description"
                 type="text"
                 name="taskDesc"
                 value={data.taskDesc}
-                onChange={handleCheck}
+                onChange={handleInput}
                 placeholder="Enter task description"
                 style={{
                     width: "50%",
@@ -105,62 +132,78 @@ const NewTask = () => {
                 }}
             />
 
+
             {/* Conditional rendering with radio button */}
             <h3 className="header">Setting up your Task</h3>
-            {checked === "inPerson"
-                &&
-                <div className="setting-div">
-                    <TaskSetting
-                        text="Suburb"
-                        type="text"
-                        name="suburbInput"
-                        value={data.suburbInput}
-                        onChange={handleCheck}
-                        placeholder="Enter a suburb"
-                        style={{
-                            width: "50%",
-                            height: "20px",
-                            padding: "10px 15px",
-                            margin: "10px 15px"
-                        }}
-                    />
-                    <TaskSetting
-                        text="Date"
-                        type="date"
-                        name="dateInput"
-                        value={data.dateInput}
-                        onChange={handleCheck}
-                        style={{
-                            width: "10%",
-                            height: "20px",
-                            padding: "10px",
-                            margin: "10px 30px"
-                        }}
-                    />
-                </div>
+            {checkedOne ?
+                <InputBox
+                    text="Suburb"
+                    type="text"
+                    name="suburbInput"
+                    value={data.suburbInput}
+                    onChange={handleInput}
+                    placeholder="Enter a suburb"
+                    style={{
+                        width: "50%",
+                        height: "20px",
+                        padding: "10px 15px",
+                        margin: "10px 15px"
+                    }}
+                /> : null
             }
+            <InputBox
+                text="Date"
+                type="date"
+                name="dateInput"
+                value={data.dateInput}
+                onChange={handleInput}
+                style={{
+                    width: "10%",
+                    height: "20px",
+                    padding: "10px",
+                    margin: "10px 30px"
+                }}
+            />
 
-            {checked === "online"
-                &&
-                <div className="setting-div">
-                    <TaskSetting
-                        text="Date"
-                        type="date"
-                        name="date-input"
-                        value={data.dateInput}
-                        onChange={handleCheck}
-                        style={{
-                            width: "10%",
-                            height: "20px",
-                            padding: "10px",
-                            margin: "10px 30px"
-                        }}
+
+            <h3 className="header">Suggest how much</h3>
+            <ul className="task-item">
+                <li style={{ fontSize: "17px" }}>Payment Type</li>
+
+                <li>
+                    <Checkbox
+                        type="checkbox"
+                        name="totalPrice"
+                        value={state.hooks}
+                        onChange={handleChange}
+                        lable="Total"
                     />
-                </div>
-            }
+                </li>
+                <li>
+                    <Checkbox
+                        type="checkbox"
+                        name="hourlyPrice"
+                        value={state.hooks}
+                        onChange={handleChange}
+                        lable="Hourly rate"
 
-
-            {/* Send data to sever */}
+                    />
+                </li>
+            </ul>
+            <InputBox
+                    text="Amount"
+                    type="text"
+                    name="budgetAmount"
+                    value={data.budgetAmount}
+                    onChange={handleInput}
+                    placeholder="Enter an amount"
+                    style={{
+                        width: "12%",
+                        height: "20px",
+                        padding: "10px 15px",
+                        margin: "10px 15px"
+                    }}
+                />
             <Button
                 type="submit"
                 text="Post a Task"
@@ -172,9 +215,6 @@ const NewTask = () => {
                     display: "inline-block"
                 }}
             />
-
-            <p>{data.taskType}</p>
-            <p>{data.taskTitle}</p>
 
         </div>
     )

@@ -38,7 +38,9 @@ app.post('/register', (req,res)=>{
         taskTitle : req.body.taskTitle,
         taskDesc : req.body.taskDesc,
         suburb : req.body.suburbInput,
-        date: req.body.dateInput
+        date: req.body.dateInput,
+        budgetType: req.body.budget,
+        budgetAmount:req.body.budgetAmount
     });
     task.save()
     .catch((err) => console.log(err));

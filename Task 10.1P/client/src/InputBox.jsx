@@ -1,7 +1,7 @@
 import React from 'react';
-import './TaskSetting.css'
+import './InputBox.css'
 
-const TaskSetting = (props) => {
+const InputBox = (props) => {
 
     return (
         <div className="setting-div">
@@ -21,4 +21,4 @@ const TaskSetting = (props) => {
 
 }
 
-export default TaskSetting;
+export default InputBox;

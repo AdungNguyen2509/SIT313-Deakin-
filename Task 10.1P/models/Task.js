@@ -6,7 +6,9 @@ const taskSchema = new mongoose.Schema(
         taskTitle: String,
         taskDesc: String,
         suburb: String,
-        date: Date,     
+        date: Date,   
+        budgetType: String,
+        budgetAmount: String
     }
 )
 

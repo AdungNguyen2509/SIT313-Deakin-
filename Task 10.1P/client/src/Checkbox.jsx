@@ -1,6 +1,6 @@
 import React from "react";
 
-const Task = (props) =>{
+const Checkbox = (props) =>{
     return(
         <div className="task-div">
             <input type="checkbox" checked={props.checked} name={props.name} value={props.value} onChange={props.onChange} />
@@ -10,4 +10,4 @@ const Task = (props) =>{
 }
 
 
-export default Task
+export default Checkbox
